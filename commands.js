@@ -1,10 +1,11 @@
+// commands.js (extraits)
 import Discord from "discord.js";
 const { SlashCommandBuilder } = Discord;
 
 import { REST } from "@discordjs/rest";
 import { Routes } from "discord-api-types/v10";
 import dotenv from "dotenv";
-import { query } from "./db.js"; // notre helper PostgreSQL
+import { query } from "./db.js";
 dotenv.config();
 
 const commands = [
@@ -39,14 +40,14 @@ export async function handleInteractions(interaction, client) {
         const discordId = user.id;
         const discordTag = user.tag;
 
-        // Vérifier si déjà inscrit
+        // Vérif doublon
         const exists = await query("SELECT 1 FROM inscriptions WHERE discord_id = $1", [discordId]);
         if (exists.rowCount > 0) {
             await interaction.reply({ content: "❌ Vous êtes déjà inscrit !", ephemeral: true });
             return;
         }
 
-        // Inscrire
+        // Insert
         await query(
             "INSERT INTO inscriptions (discord_id, discord_tag, minecraft) VALUES ($1, $2, $3)",
             [discordId, discordTag, pseudo]
