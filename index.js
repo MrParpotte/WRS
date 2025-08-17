@@ -8,6 +8,7 @@ const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
 const token = process.env.TOKEN;
 const guildId = process.env.GUILD_ID;
+const clientId = process.env.CLIENT_ID;
 const dbFile = './players.json';
 
 let db = {};
@@ -18,7 +19,7 @@ if (fs.existsSync(dbFile)) {
 // Déployer les commandes
 const rest = new REST({ version: '10' }).setToken(token);
 (async () => {
-    await rest.put(Routes.applicationGuildCommands(client.user?.id || 'CLIENT_ID', guildId), { body: commands });
+    await rest.put(Routes.applicationGuildCommands(client.user?.id || clientId, guildId), { body: commands });
 })();
 
 client.on('ready', () => console.log(`${client.user.tag} est connecté !`));
