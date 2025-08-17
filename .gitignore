@@ -1,0 +1,21 @@
+# Node modules
+node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Env file (très important pour ne pas divulguer ton token)
+.env
+
+# Base de données locale
+database.json
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Compiled files
+dist/
+build/
