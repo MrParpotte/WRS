@@ -1,13 +1,18 @@
 {
   "name": "wrs",
   "version": "1.0.0",
+  "description": "",
   "main": "index.js",
-  "type": "module",
   "scripts": {
-    "start": "node index.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
     "discord.js": "^14.21.0",
-    "dotenv": "^16.6.1"
+    "dotenv": "^17.2.1",
+    "fs": "^0.0.1-security",
+    "node-fetch": "^3.3.2"
   }
 }
