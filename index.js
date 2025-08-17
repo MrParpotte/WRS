@@ -18,7 +18,7 @@ if (fs.existsSync(dbFile)) {
 // Déployer les commandes
 const rest = new REST({ version: '10' }).setToken(token);
 (async () => {
-    await rest.put(Routes.applicationGuildCommands(client.user?.id || 'BOT_ID', guildId), { body: commands });
+    await rest.put(Routes.applicationGuildCommands(client.user?.id || 'CLIENT_ID', guildId), { body: commands });
 })();
 
 client.on('ready', () => console.log(`${client.user.tag} est connecté !`));
